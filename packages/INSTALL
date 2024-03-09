@@ -1,0 +1,7 @@
+sudo
+tailscale
+neovim
+rsync
+git
+base-devel
+python-setuptools

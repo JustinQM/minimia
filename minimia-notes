@@ -1,0 +1,50 @@
+Changes:
+
+PHASE 0: - prepare and install sd card from linux host -
+	Partition SD card with 400M efi boot and ext4 root
+	Download latest armv7 arch linux tarball | wget http://os.archlinuxarm.org/os/ArchLinuxARM-rpi-armv7-latest.tar.gz
+	Mount root and boot directores
+	Unpack | bsdtar -xpf ArchLinuxARM-rpi-armv7-latest.tar.gz -C ./root , sync
+	Sync boot directories | mv ./root/boot* ./boot
+	Install mia-tunnel to /usr/bin/mia-tunnel | move mia.service to /etc/systemd/system/
+	Change hostname to minimia | 
+	Allow Root SSH Login | /etc/ssh/sshd_config, PermitRootLogin yes
+	Enable ipv4 port forwarding | sysctl net.ipv4.conf.all.forwarding=1 , add net.ipv4.conf.all.forwarding=1 to /etc/sysctl.d/99-sysctl.conf
+	Remove MOTD | rm /etc/motd
+	Unmount | umount ./boot ./root
+
+PHASE 1: - init script from alarm user - 
+	Update Keyrings and System | pacman-key --init,  pacman-key --populate archlinuxarm, pacman -Syyu
+	Install packages inside INSTALL list
+	Remove packages inside REMOVE list
+	Enable and Login to Tailscale
+	Enable mia-tunnel Service
+	Install RPi Python Module from AUR | https://aur.archlinux.org/packages/python-rpi-gpio
+	Create user mia | useradd -m mia
+	Change mia password to mamamia | passwd mia
+	Add mia to sudoers | uncomment wheel group in visudo, add mia to wheel
+	Add good bashrc to mia home directory
+	Disallow Root SSH Login | /etc/ssh/sshd_config, PermitRootLogin no
+	Delete user alarm | User, Group, Home Directory
+	Change root password to mamamia...or disable root? | passwd
+
+OPTIONAL:
+	Customize /usr/bin/neofetch | image_source=/etc/minimia, ascii_colors=
+
+PHASE 2: - init script from mia user - not needed?
+	Reboot
+
+
+
+INSTALL PACKAGES:
+	sudo
+	tailscale
+	neovim
+	rsync
+	git
+
+OPTIONAL:
+	neofetch
+
+REMOVE PACKAGES:
+	nano
