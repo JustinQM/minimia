@@ -43,7 +43,9 @@ printf "Connected to minimia via SSH and executing remote payload...\n"
 printf "\nDefault Root password is 'root'\n\n\n"
 ssh -o StrictHostKeyChecking=no root@$ipaddress 'bash -s' < ./packages/phase1_payload.sh
 
-printf "\n\nLogging into Tailscale via SSH...\n"
+printf "\n\nLogging into minimia via SSH from default user (mia)\n"
+printf "to login into Tailscale..."
+sleep 2
 printf "\nDefault User password is 'mamamia'\n\n\n"
 echo mamamia | ssh -o StrictHostKeyChecking=no -tt mia@$ipaddress "sudo tailscale up;sudo reboot now"
 

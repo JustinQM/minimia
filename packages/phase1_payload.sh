@@ -31,8 +31,6 @@ pacman -U python-rpi-gpio-0.7.1-1-any.pkg.tar.xz --noconfirm
 cd ~
 printf "	Configuring the group wheel to be able to use sudo...\n"
 echo "%wheel ALL=(ALL:ALL) ALL" >> /etc/sudoers
-printf "	Login to Tailscale\n"
-tailscale up
 
 printf "\n\nCreating and Configuring default user (mia)\n"
 printf "	Creating mia user...\n"
@@ -56,6 +54,4 @@ printf "	Removing INSTALL and REMOVE lists from root\n"
 rm ./INSTALL
 rm ./REMOVE
 
-printf "Installation Complete! Rebooting!\n\n"
 reboot now
-
