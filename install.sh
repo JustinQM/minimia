@@ -57,6 +57,7 @@ fi
 if ! test -d ./packages/mia-tunnel; then
 	printf "Downloading Mia-Tunnel\n"
 	git clone https://github.com/mitterdoo/mia-tunnel ./packages/mia-tunnel
+	chmod -R +x ./packages/mia-tunnel
 fi
 
 if ! test -f ./packages/mia-tunnel/mia_ip.txt; then
