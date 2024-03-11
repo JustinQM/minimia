@@ -179,6 +179,7 @@ function mia_13
 	check_error
 
 	printf "	Rebooting to Enable Tailscale and Mia-Tunnel Servies...\n"
+	printf "\n\n BASE INSTALL SUCCESFUL. PLEASE PRESS ENTER!\n"
 	reboot now
 }
 
