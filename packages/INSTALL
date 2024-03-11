@@ -5,3 +5,4 @@ rsync
 git
 base-devel
 python-setuptools
+cron
