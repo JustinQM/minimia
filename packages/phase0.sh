@@ -78,6 +78,8 @@ function p0_6
 	printf "	Installing mia-tunnel...\n"
 	cp -r ./packages/mia-tunnel ./root/usr/bin
 	cp ./packages/mia-tunnel/mia.service ./root/etc/systemd/system/mia.service
+	printf "	Installing minimia-updater\n"
+	cp -r ./packages/minimia-updater ./root/usr/bin
 	printf "	Changing hostname to minimia...\n"
 	echo minimia > ./root/etc/hostname
 	printf "	Enabling IPv4 and IPv6 Forwarding...\n"

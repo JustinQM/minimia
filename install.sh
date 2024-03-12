@@ -60,6 +60,12 @@ if ! test -d ./packages/mia-tunnel; then
 	chmod -R +x ./packages/mia-tunnel
 fi
 
+if ! test -d ./packages/minimia-updater; then
+	printf "Downloading minimia-updater\n"
+	git clone https://github.com/JustinQM/minimia-updater ./packages/minimia-updater
+	chmod -R +x ./packages/minimia-updater
+fi
+
 if ! test -f ./packages/mia-tunnel/mia_ip.txt; then
 	if $tailscale; then
 		mia_ipaddress=$(tailscale status | grep -w mia | awk '{print $1}')

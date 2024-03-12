@@ -77,7 +77,7 @@ function p1_2
 	printf "\n\nLogging into minimia via SSH from default user (mia)\n"
 	printf "to login into Tailscale...\n\n"
 	printf "Default User password is 'mamamia'\n\n\n"
-	echo mamamia | ssh -o StrictHostKeyChecking=no -tt mia@$ipaddress "sudo whoami; sudo /bin/bash -c 'echo \"* 3 * * 2 root /usr/bin/mia-tunnel/update.sh\" >> /etc/crontab' ;echo;echo;echo;echo 'Please Login to Tailscale Now:';sudo tailscale up; echo 'INSTALL SUCCESFUL! PRESS ENTER NOW!'sudo reboot now"
+	echo mamamia | ssh -o StrictHostKeyChecking=no -tt mia@$ipaddress "sudo whoami; printf \"\n\n\n\n\"; 'Please Login to Tailscale Now:';sudo tailscale up; echo 'INSTALL SUCCESFUL! PRESS ENTER NOW!'sudo reboot now"
 
 	printf "\n\nPress Enter to complete install\n"
 	read -p "IF INSTALL FAILED: Press Control-C Now"

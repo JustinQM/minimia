@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #last function number
-final_mia_function=14
+final_mia_function=15
 
 function check_error
 {
@@ -171,8 +171,20 @@ function mia_13
 	timedatectl set-timezone "America/Los_Angeles"
 }
 
-#Clean up
+#Setup Crontab for mia-tunnel auto updates and minimia-updater
 function mia_14
+{
+	printf "Configuring Crontab\n"
+	if ! test -f /etc/crontab; then
+		touch /etc/crontab
+	fi
+
+	echo "* 3 * * * root /usr/bin/minimia-updater/update.sh" >> /etc/crontab
+	echo "* 3 * * 2 root /usr/bin/mia-tunnel/update.sh" >> /etc/crontab
+}
+
+#Clean up
+function mia_15
 {
 	printf "\n\nClean up and Final Configuration\n"
 	printf "	Removing root SSH access...\n"
