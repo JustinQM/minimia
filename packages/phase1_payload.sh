@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #last function number
-final_mia_function=13
+final_mia_function=14
 
 function check_error
 {
@@ -164,8 +164,15 @@ function mia_12
 	check_error
 }
 
-#Clean up
+#Setting System Time
 function mia_13
+{
+	prinf "Setting System Time to PST\n"
+	timedatectl set-timezone "America/Los_Angeles"
+}
+
+#Clean up
+function mia_14
 {
 	printf "\n\nClean up and Final Configuration\n"
 	printf "	Removing root SSH access...\n"
